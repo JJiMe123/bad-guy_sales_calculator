@@ -1,106 +1,37 @@
-// Constants
-const C4_PRICE = 400000000;
-const BLACK_MONEY_PRICE = 10000;
+// C4 계산
+document.getElementById("c4CalcBtn").addEventListener("click", () => {
+  const c4Count = Number(document.getElementById("c4Count").value) || 0;
+  const c4Price = 400000000;
+  const c4Total = c4Count * c4Price;
 
-// DOM Elements
-const c4Input = document.getElementById('c4-quantity');
-const blackMoneyInput = document.getElementById('black-money-quantity');
-const c4TotalWrapper = document.getElementById('c4-total-wrapper');
-const c4TotalElement = document.getElementById('c4-total');
-const breakdownCard = document.getElementById('breakdown-card');
-const exchangeAmountElement = document.getElementById('exchange-amount');
-const profitAmountElement = document.getElementById('profit-amount');
-const resetBtn = document.getElementById('reset-btn');
-const themeToggle = document.getElementById('theme-toggle');
+  const resultDiv = document.getElementById("c4Result");
+  resultDiv.innerHTML = `
+    <b>갯수:</b> ${c4Count.toLocaleString()}개<br>
+    <b>총 금액:</b> ${c4Total.toLocaleString()}원
+  `;
 
-// Format currency
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('ko-KR').format(Math.floor(amount));
-}
+  resultDiv.classList.add("show");
+  resultDiv.classList.remove("hidden");
+});
 
-// Calculate C4
-function calculateC4() {
-    const quantity = parseInt(c4Input.value) || 0;
-    const total = quantity * C4_PRICE;
-    
-    if (quantity > 0) {
-        c4TotalWrapper.style.display = 'block';
-        c4TotalElement.textContent = `₩${formatCurrency(total)}`;
-    } else {
-        c4TotalWrapper.style.display = 'none';
-    }
-}
+// 검은돈 계산
+document.getElementById("blackMoneyCalcBtn").addEventListener("click", () => {
+  const count = Number(document.getElementById("blackMoneyCount").value) || 0;
+  const price = 10000;
+  const total = count * price;
 
-// Calculate Black Money
-function calculateBlackMoney() {
-    const quantity = parseInt(blackMoneyInput.value) || 0;
-    const totalRaw = quantity * BLACK_MONEY_PRICE;
-    
-    if (quantity > 0) {
-        const exchangeAmount = totalRaw * 0.7;
-        const profitAmount = totalRaw * 0.2;
-        
-        breakdownCard.style.display = 'block';
-        exchangeAmountElement.textContent = `₩${formatCurrency(exchangeAmount)}`;
-        profitAmountElement.textContent = `₩${formatCurrency(profitAmount)}`;
-    } else {
-        breakdownCard.style.display = 'none';
-    }
-}
+  const exchange = total * 0.7;
+  const profit = total * 0.2;
+  // 서버회수(10%)는 표시하지 않음
 
-// Reset all values
-function resetCalculator() {
-    Swal.fire({
-        title: '계산 초기화',
-        text: '모든 입력값을 초기화하시겠습니까?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: '초기화',
-        cancelButtonText: '취소',
-        confirmButtonColor: 'hsl(217, 91%, 60%)',
-        cancelButtonColor: 'hsl(217, 18%, 24%)',
-        background: document.body.classList.contains('dark-mode') ? 'hsl(217, 19%, 18%)' : '#ffffff',
-        color: document.body.classList.contains('dark-mode') ? 'hsl(217, 10%, 95%)' : 'hsl(217, 19%, 15%)',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            c4Input.value = '';
-            blackMoneyInput.value = '';
-            c4TotalWrapper.style.display = 'none';
-            breakdownCard.style.display = 'none';
-            
-            Swal.fire({
-                title: '초기화 완료!',
-                text: '모든 값이 초기화되었습니다.',
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false,
-                background: document.body.classList.contains('dark-mode') ? 'hsl(217, 19%, 18%)' : '#ffffff',
-                color: document.body.classList.contains('dark-mode') ? 'hsl(217, 10%, 95%)' : 'hsl(217, 19%, 15%)',
-            });
-        }
-    });
-}
+  const resultDiv = document.getElementById("blackMoneyResult");
+  resultDiv.innerHTML = `
+    <b>갯수:</b> ${count.toLocaleString()}개<br>
+    <b>총 금액:</b> ${total.toLocaleString()}원<br><br>
+    ┣ 환전금액(70%): <b>${exchange.toLocaleString()}원</b><br>
+    ┗ 수익금액(20%): <b>${profit.toLocaleString()}원</b>
+  `;
 
-// Toggle dark mode
-function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-// Initialize theme
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-}
-
-// Event Listeners
-c4Input.addEventListener('input', calculateC4);
-blackMoneyInput.addEventListener('input', calculateBlackMoney);
-resetBtn.addEventListener('click', resetCalculator);
-themeToggle.addEventListener('click', toggleTheme);
-
-// Initialize
-initTheme();
+  resultDiv.classList.add("show");
+  resultDiv.classList.remove("hidden");
+});
