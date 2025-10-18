@@ -1,37 +1,51 @@
 // C4 계산
-document.getElementById("c4CalcBtn").addEventListener("click", () => {
-  const c4Count = Number(document.getElementById("c4Count").value) || 0;
-  const c4Price = 400000000;
-  const c4Total = c4Count * c4Price;
+function calculateC4() {
+  const count = parseInt(document.getElementById('c4Count').value);
+  const resultDiv = document.getElementById('c4Result');
+  const totalEl = document.getElementById('c4Total');
 
-  const resultDiv = document.getElementById("c4Result");
-  resultDiv.innerHTML = `
-    <b>갯수:</b> ${c4Count.toLocaleString()}개<br>
-    <b>총 금액:</b> ${c4Total.toLocaleString()}원
-  `;
+  if (isNaN(count) || count <= 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: '입력 오류',
+      text: 'C4 갯수를 올바르게 입력하세요!',
+      confirmButtonColor: '#00b4ff'
+    });
+    return;
+  }
 
-  resultDiv.classList.add("show");
-  resultDiv.classList.remove("hidden");
-});
+  const total = count * 400000000;
+  totalEl.textContent = total.toLocaleString();
+
+  resultDiv.classList.remove('hidden');
+  resultDiv.classList.add('animate__slideInUp');
+}
 
 // 검은돈 계산
-document.getElementById("blackMoneyCalcBtn").addEventListener("click", () => {
-  const count = Number(document.getElementById("blackMoneyCount").value) || 0;
-  const price = 10000;
-  const total = count * price;
+function calculateBlackMoney() {
+  const count = parseInt(document.getElementById('blackMoneyCount').value);
+  const resultDiv = document.getElementById('blackMoneyResult');
 
-  const exchange = total * 0.7;
-  const profit = total * 0.2;
-  // 서버회수(10%)는 표시하지 않음
+  if (isNaN(count) || count <= 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: '입력 오류',
+      text: '검은돈 갯수를 올바르게 입력하세요!',
+      confirmButtonColor: '#00b4ff'
+    });
+    return;
+  }
 
-  const resultDiv = document.getElementById("blackMoneyResult");
+  const base = count * 10000;
+  const exchange = base * 0.7;
+  const profit = base * 0.2;
+
   resultDiv.innerHTML = `
-    <b>갯수:</b> ${count.toLocaleString()}개<br>
-    <b>총 금액:</b> ${total.toLocaleString()}원<br><br>
-    ┣ 환전금액(70%): <b>${exchange.toLocaleString()}원</b><br>
-    ┗ 수익금액(20%): <b>${profit.toLocaleString()}원</b>
+    <p class="text-lg font-semibold">환전금액 70%: ${exchange.toLocaleString()}원</p>
+    <p class="text-lg font-semibold">수익금액 20%: ${profit.toLocaleString()}원</p>
+    <p class="text-base mt-1 text-gray-300">환전70% + 수익20% + 서버회수10%</p>
   `;
 
-  resultDiv.classList.add("show");
-  resultDiv.classList.remove("hidden");
-});
+  resultDiv.classList.remove('hidden');
+  resultDiv.classList.add('animate__slideInUp');
+}
