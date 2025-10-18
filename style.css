@@ -4,42 +4,30 @@ body {
   color: #ffffff;
 }
 
-/* 카드 */
+/* 카드 공통 */
 .card {
-  background-color: #1c1b23;
+  background-color: #1c1b23 !important; /* GitHub Pages에서도 강제 적용 */
   border: 1px solid #2f2f38;
-  transition: all 0.3s ease;
+  border-radius: 16px;
   box-shadow: 0 0 10px rgba(0, 180, 255, 0.15);
+  transition: all 0.3s ease;
 }
 
+/* 카드 호버 */
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
-}
-
-/* 결과 박스 */
-#c4Result,
-#blackMoneyResult {
-  background: rgba(0, 180, 255, 0.08);
-  border: 1px solid rgba(0, 180, 255, 0.25);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 15px rgba(0, 180, 255, 0.25);
-  color: #1a1a1a; /* 결과 글씨 어둡게 */
-  font-weight: 600;
-  padding: 12px;
 }
 
 /* 카드 제목 */
 h2 {
   color: #ffffff;
   font-size: 1.8rem;
-  text-align: center;
   font-weight: 700;
   text-shadow: 0 0 15px rgba(0, 180, 255, 0.9),
                0 0 25px rgba(0, 180, 255, 0.6),
                0 0 40px rgba(0, 180, 255, 0.4);
+  text-align: center;
 }
 
 /* 페이지 제목 */
@@ -86,14 +74,19 @@ input[type="number"]:focus {
   transform: translateY(-1px);
 }
 
+/* 결과 카드 */
+#c4Result,
+#blackMoneyResult {
+  background: rgba(0, 180, 255, 0.08);
+  border: 1px solid rgba(0, 180, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 12px;
+  color: #1a1a1a; /* 글씨 어둡게 */
+  font-weight: 600;
+}
+
 /* 숨김 처리 */
 .hidden {
   display: none;
-}
-
-/* 반응형 여백 */
-@media (max-width: 768px) {
-  .card {
-    margin-bottom: 1rem;
-  }
 }
