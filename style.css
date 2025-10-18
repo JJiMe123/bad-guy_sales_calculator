@@ -1,19 +1,22 @@
+/* 전체 배경 및 기본 글씨 */
 body {
   font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
   background-color: #111013;
   color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
 
 /* 카드 공통 */
 .card {
-  background-color: #1c1b23 !important; /* GitHub Pages 강제 적용 */
+  background-color: #1c1b23 !important; /* 카드 배경 강제 적용 */
   border: 1px solid #2f2f38;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0, 180, 255, 0.15);
   transition: all 0.3s ease;
 }
 
-/* 카드 호버 */
+/* 카드 호버 효과 */
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
@@ -24,10 +27,10 @@ h2 {
   color: #ffffff;
   font-size: 1.8rem;
   font-weight: 700;
+  text-align: center;
   text-shadow: 0 0 15px rgba(0, 180, 255, 0.9),
                0 0 25px rgba(0, 180, 255, 0.6),
                0 0 40px rgba(0, 180, 255, 0.4);
-  text-align: center;
 }
 
 /* 페이지 제목 */
@@ -39,17 +42,27 @@ h1 {
   text-shadow: 0 0 20px rgba(0, 180, 255, 0.9),
                0 0 35px rgba(0, 180, 255, 0.6),
                0 0 50px rgba(0, 180, 255, 0.4);
+  margin-bottom: 3rem;
 }
 
-/* 입력창 */
+/* 레이블, 입력창 글씨 흰색 */
+label,
+input[type="number"] {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 입력창 배경 */
 input[type="number"] {
   background-color: #2b2a33;
-  color: #fff;
   border: 1px solid #3f3f44;
-  transition: all 0.25s ease;
+  border-radius: 8px;
   text-align: center;
+  padding: 8px;
+  transition: all 0.25s ease;
 }
 
+/* 입력창 포커스 */
 input[type="number"]:focus {
   background-color: #3b3a44;
   border-color: #00b4ff;
@@ -57,11 +70,17 @@ input[type="number"]:focus {
   outline: none;
 }
 
-/* 버튼 */
+/* 플레이스홀더 글씨 흰색 */
+input::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+/* 버튼 스타일 */
 .btn-success {
   background: linear-gradient(135deg, #00d4ff, #0088ff);
   border: none !important;
-  color: #fff !important;
+  color: #ffffff !important;
   font-weight: 600;
   text-shadow: 0 0 10px rgba(0, 180, 255, 0.8);
   box-shadow: 0 0 12px rgba(0, 180, 255, 0.4);
@@ -82,11 +101,32 @@ input[type="number"]:focus {
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 12px;
-  color: #1a1a1a; /* 글씨 어둡게 */
+  margin-top: 12px;
+}
+
+/* 결과 텍스트 흰색 */
+#c4Result p,
+#blackMoneyResult p {
+  color: #ffffff;
   font-weight: 600;
+  margin: 4px 0;
+}
+
+/* 검은돈 세부사항 문구 연한 회색 */
+#blackMoneyResult p.text-gray-400 {
+  color: #cccccc;
+  font-size: 0.9rem;
+  margin-top: 6px;
 }
 
 /* 숨김 처리 */
 .hidden {
   display: none;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
 }
