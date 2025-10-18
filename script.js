@@ -41,9 +41,9 @@ function calculateBlackMoney() {
   const profit = base * 0.2;
 
   resultDiv.innerHTML = `
-    <p class="text-lg font-semibold">환전금액 70%: ${exchange.toLocaleString()}원</p>
-    <p class="text-lg font-semibold">수익금액 20%: ${profit.toLocaleString()}원</p>
-    <p class="text-base mt-1 text-gray-300">환전70% + 수익20% + 서버회수10%</p>
+    <p>환전금액 70%: ${exchange.toLocaleString()}원</p>
+    <p>수익금액 20%: ${profit.toLocaleString()}원</p>
+    <p class="text-gray-400">환전70% + 수익20% + 서버회수10%</p>
   `;
 
   resultDiv.classList.remove('hidden');
