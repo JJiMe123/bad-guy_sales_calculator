@@ -6,7 +6,7 @@ body {
 
 /* 카드 공통 */
 .card {
-  background-color: #1c1b23 !important; /* GitHub Pages에서도 강제 적용 */
+  background-color: #1c1b23 !important; /* GitHub Pages 강제 적용 */
   border: 1px solid #2f2f38;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0, 180, 255, 0.15);
