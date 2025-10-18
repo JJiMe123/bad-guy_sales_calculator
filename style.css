@@ -1,30 +1,99 @@
 body {
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  background-color: #111013;
+  color: #ffffff;
 }
 
+/* 카드 */
 .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1c1b23;
+  border: 1px solid #2f2f38;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 180, 255, 0.15);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
 }
 
-input {
-  text-align: right;
-  font-weight: bold;
+/* 결과 박스 */
+#c4Result,
+#blackMoneyResult {
+  background: rgba(0, 180, 255, 0.08);
+  border: 1px solid rgba(0, 180, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.25);
+  color: #1a1a1a; /* 결과 글씨 어둡게 */
+  font-weight: 600;
+  padding: 12px;
 }
 
-/* 슬라이드 애니메이션 */
-.result {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.5s ease;
+/* 카드 제목 */
+h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(0, 180, 255, 0.9),
+               0 0 25px rgba(0, 180, 255, 0.6),
+               0 0 40px rgba(0, 180, 255, 0.4);
 }
 
-.result.show {
-  opacity: 1;
-  max-height: 300px;
+/* 페이지 제목 */
+h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 180, 255, 0.9),
+               0 0 35px rgba(0, 180, 255, 0.6),
+               0 0 50px rgba(0, 180, 255, 0.4);
+}
+
+/* 입력창 */
+input[type="number"] {
+  background-color: #2b2a33;
+  color: #fff;
+  border: 1px solid #3f3f44;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+input[type="number"]:focus {
+  background-color: #3b3a44;
+  border-color: #00b4ff;
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.6);
+  outline: none;
+}
+
+/* 버튼 */
+.btn-success {
+  background: linear-gradient(135deg, #00d4ff, #0088ff);
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 180, 255, 0.8);
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #00f0ff, #0099ff);
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* 숨김 처리 */
+.hidden {
+  display: none;
+}
+
+/* 반응형 여백 */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
 }
